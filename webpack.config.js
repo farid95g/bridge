@@ -2,13 +2,13 @@ const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  mode: 'development',
+  mode: "development",
   devServer: {
     port: 3000,
   },
   entry: "/src/index.js",
   output: {
-    path: path.resolve(__dirname, "build")
+    path: path.resolve(__dirname, "build"),
   },
   module: {
     rules: [
@@ -18,20 +18,26 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: [
-              "@babel/preset-env", "@babel/preset-react"
-            ],
+            presets: ["@babel/preset-env", "@babel/preset-react"],
           },
         },
       },
       {
-        test: /\.scss$/,
+        test: /\.js[x]?$/,
+        enforce: "pre",
         use: [
-          "style-loader",
-          "css-loader",
-          "sass-loader"
-        ]
-      }
+          {
+            loader: "eslint-loader",
+            options: { fix: true },
+          },
+        ],
+        include: path.resolve(__dirname, "./src/**/*.js"),
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.scss$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
     ],
   },
   plugins: [
