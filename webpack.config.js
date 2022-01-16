@@ -45,4 +45,7 @@ module.exports = {
       template: "./public/index.html",
     }),
   ],
+  resolve: {
+    extensions: ["", ".js", ".jsx", ".es6"]
+  }
 };
