@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
       <h1>App Component</h1>
