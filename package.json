@@ -1,0 +1,19 @@
+{
+  "name": "bridge",
+  "version": "1.0.0",
+  "description": "Simple card game called Bridge",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/farid95g/bridge.git"
+  },
+  "author": "Farid Guluzade",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/farid95g/bridge/issues"
+  },
+  "homepage": "https://github.com/farid95g/bridge#readme"
+}
