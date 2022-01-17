@@ -1,21 +1,45 @@
-import React, { Component } from "react";
-import { Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
-import Homepage from "./pages/Homepage";
-import Login from "./pages/Login";
+import React, { Component } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import Header from './components/Header';
+import Homepage from './pages/Homepage';
+import Login from './pages/Login';
+import { login } from './redux/actions/auth';
 
-export default class App extends Component {
+class App extends Component {
   render() {
     return (
       <div className="app">
         <Header />
         <main>
           <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/" element={<Homepage />} />
+            <Route
+              path="/login"
+              element={(
+                <Login
+                  login={this.props.login}
+                />
+            )}
+            />
+
+            <Route
+              path="/"
+              exact
+              element={(
+                <Homepage
+                  isAuth={this.props.isAuth}
+                />
+            )}
+            />
           </Routes>
         </main>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  isAuth: state.authReducer.isAuth,
+});
+
+export default connect(mapStateToProps, { login })(App);
