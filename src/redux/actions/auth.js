@@ -16,7 +16,7 @@ export const isLogged = () => dispatch => {
 
 export const signOut = () => dispatch => {
   ls.set('isAuth', false);
-  dispatch({ type: authActions.SET_LOGGED_IN, isAuth: false });
+  dispatch({ type: authActions.SET_LOGGED_IN, payload: { isAuth: false } });
 }
 
 export const hasError = (isAuth) => dispatch => {

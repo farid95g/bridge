@@ -14,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <Header signOut={this.props.signOut} />
+        <Header isAuth={this.props.isAuth} signOut={this.props.signOut} />
         <main>
           <Routes>
             <Route

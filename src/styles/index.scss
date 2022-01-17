@@ -42,4 +42,17 @@
   .has-error {
     color: red;
   }
+
+  .homepage {
+    h1 {
+      text-align: center;
+    }
+
+    > span {
+      color: gray;
+      font-size: 1.5rem;
+      display: block;
+      text-align: center;
+    }
+  }
 }

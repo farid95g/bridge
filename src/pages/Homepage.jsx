@@ -1,12 +1,17 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-export default function Homepage(props) {
+const Homepage = (props) => {
   if (!props.isAuth) {
     return <Navigate to="/login" replace />;
   }
 
   return (
-    <h1>Homepage</h1>
+    <div className='homepage'>
+      <h1>Кто выйграет?</h1>
+      <span>Сыграй в игру и испытай удачу</span>
+    </div>
   )
 }
+
+export default Homepage;

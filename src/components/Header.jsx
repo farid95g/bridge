@@ -1,15 +1,17 @@
 import React from "react";
 
-const Header = ({ signOut }) => {
+const Header = ({ isAuth, signOut }) => {
   return (
     <header className="header">
       <div className="logo">
         <span>Bridge</span>
       </div>
 
-      <div className="signout">
-        <button onClick={signOut}>Sign out</button>
-      </div>
+      {
+        isAuth && <div className="signout">
+          <button onClick={signOut}>Sign out</button>
+        </div>
+      }
     </header>
   );
 };
