@@ -13,3 +13,8 @@ export const isLogged = () => dispatch => {
   const isAuth = ls.get('isAuth');
   dispatch({ type: authActions.SET_LOGGED_IN, isAuth });
 }
+
+export const signOut = () => dispatch => {
+  ls.set('isAuth', false);
+  dispatch({ type: authActions.SET_LOGGED_IN, isAuth: false });
+}

@@ -3,3 +3,39 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.app {
+  .header {
+    background-color: #202938;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+
+    .logo {
+      span {
+        background-color: #111828;
+        color: #fff;
+        padding: .5rem 1rem;
+        border-radius: 5px;
+      }
+    }
+
+    .signout {
+      button {
+        &, &:focus {
+          background-color: transparent;
+          color: #fff;
+          font-size: 1rem;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          background-color: #111828;
+          padding: .5rem 1rem;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+}

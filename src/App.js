@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Header from './components/Header';
 import Homepage from './pages/Homepage';
 import Login from './pages/Login';
-import { login, isLogged } from './redux/actions/auth';
+import { login, isLogged, signOut } from './redux/actions/auth';
 
 class App extends Component {
   componentDidMount() {
@@ -14,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <Header />
+        <Header signOut={this.props.signOut} />
         <main>
           <Routes>
             <Route
@@ -47,4 +47,4 @@ const mapStateToProps = (state) => ({
   isAuth: state.authReducer.isAuth,
 });
 
-export default connect(mapStateToProps, { login, isLogged })(App);
+export default connect(mapStateToProps, { login, isLogged, signOut })(App);

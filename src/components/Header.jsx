@@ -1,9 +1,17 @@
-import React, { Component } from 'react';
+import React from "react";
 
-export default class Header extends Component {
-  render() {
-    return (
-      <h1>Header</h1>
-    );
-  }
-}
+const Header = ({ signOut }) => {
+  return (
+    <header className="header">
+      <div className="logo">
+        <span>Bridge</span>
+      </div>
+
+      <div className="signout">
+        <button onClick={signOut}>Sign out</button>
+      </div>
+    </header>
+  );
+};
+
+export default Header;
