@@ -37,5 +37,8 @@
             "before": false,
             "after": true
         }]
-    }
+    },
+    "react/prefer-stateless-function": [
+        2, { "ignorePureComponents": true }
+    ]
 }

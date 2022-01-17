@@ -5,10 +5,12 @@ module.exports = {
   mode: "development",
   devServer: {
     port: 3000,
+    historyApiFallback: true,
   },
   entry: "/src/index.js",
   output: {
     path: path.resolve(__dirname, "build"),
+    publicPath: '/'
   },
   module: {
     rules: [
