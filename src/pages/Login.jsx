@@ -7,7 +7,8 @@ export default class Login extends Component {
 
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      error: this.props.error
     }
 
     this.onFormSubmit = this.onFormSubmit.bind(this);
@@ -25,6 +26,7 @@ export default class Login extends Component {
     this.setState({
       [prop]: value
     })
+    this.props.hasError(true);
   }
 
   render() {
@@ -35,6 +37,7 @@ export default class Login extends Component {
     return (
       <div>
         <h1>Sign in to your account</h1>
+        {this.props.error && <span className='has-error'>Имя пользователя или пароль введены не верно.</span>}
         <form onSubmit={this.onFormSubmit}>
           <div>
             <input
