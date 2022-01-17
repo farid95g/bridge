@@ -4,9 +4,13 @@ import { connect } from 'react-redux';
 import Header from './components/Header';
 import Homepage from './pages/Homepage';
 import Login from './pages/Login';
-import { login } from './redux/actions/auth';
+import { login, isLogged } from './redux/actions/auth';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.isLogged();
+  }
+
   render() {
     return (
       <div className="app">
@@ -18,6 +22,7 @@ class App extends Component {
               element={(
                 <Login
                   login={this.props.login}
+                  isAuth={this.props.isAuth}
                 />
             )}
             />
@@ -42,4 +47,4 @@ const mapStateToProps = (state) => ({
   isAuth: state.authReducer.isAuth,
 });
 
-export default connect(mapStateToProps, { login })(App);
+export default connect(mapStateToProps, { login, isLogged })(App);
