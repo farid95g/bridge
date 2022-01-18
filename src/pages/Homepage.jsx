@@ -6,6 +6,10 @@ export default class Homepage extends Component {
     this.props.drawCard();
   }
 
+  play = () => {
+    this.props.startGame();
+  }
+
   render() {
     if (!this.props.isAuth) {
       return <Navigate to="/login" replace />;
@@ -21,12 +25,24 @@ export default class Homepage extends Component {
         <div className="game-zone">
           <div>
             <div>
-              <div className="card">?</div>
-              <button onClick={this.props.drawCard}>Слева</button>
+              <div className="card">
+                {
+                  this.props.started
+                    ? <img src={this.props.cards[0]?.image} />
+                    : <span>?</span>
+                }
+              </div>
+              <button onClick={this.play}>Слева</button>
             </div>
             <div>
-              <button>Справа</button>
-              <div className="card">?</div>
+              <button onClick={this.play}>Справа</button>
+              <div className="card">
+                {
+                  this.props.started
+                    ? <img src={this.props.cards[1]?.image} />
+                    : <span>?</span>
+                }
+              </div>
             </div>
           </div>
         </div>

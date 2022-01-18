@@ -4,6 +4,6 @@ export const authActions = {
 };
 
 export const gameActions = {
-  IS_SHUFFLED: 'IS_SHUFFLED',
-  IS_DRAWEN: 'IS_DRAWEN'
+  IS_DRAWEN: 'IS_DRAWEN',
+  STARTED: 'STARTED'
 };

@@ -1,7 +1,8 @@
 import { gameActions } from '../../utils/constants';
 
 const initialState = {
-  cards: []
+  cards: [],
+  started: false
 };
 
 export const gameReducer = (state = initialState, action) => {
@@ -9,7 +10,13 @@ export const gameReducer = (state = initialState, action) => {
     case gameActions.IS_DRAWEN:
       return {
         ...state,
-        ...action.payload?.cards
+        ...action.payload
+      }
+    
+    case gameActions.STARTED:
+      return {
+        ...state,
+        started: action.started
       }
 
     default:

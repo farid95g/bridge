@@ -8,3 +8,7 @@ export const drawCard = () => dispatch => {
       dispatch({ type: gameActions.IS_DRAWEN, payload: { cards: data.cards } });
     })
 }
+
+export const startGame = () => dispatch => {
+  dispatch({ type: gameActions.STARTED, started: true });
+}
