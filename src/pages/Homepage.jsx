@@ -7,7 +7,7 @@ export default class Homepage extends Component {
   }
 
   render() {
-    if (!props.isAuth) {
+    if (!this.props.isAuth) {
       return <Navigate to="/login" replace />;
     }
 
@@ -22,7 +22,7 @@ export default class Homepage extends Component {
           <div>
             <div>
               <div className="card">?</div>
-              <button onClick={props.drawCard}>Слева</button>
+              <button onClick={this.props.drawCard}>Слева</button>
             </div>
             <div>
               <button>Справа</button>

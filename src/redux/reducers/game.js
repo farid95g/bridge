@@ -9,7 +9,7 @@ export const gameReducer = (state = initialState, action) => {
     case gameActions.IS_DRAWEN:
       return {
         ...state,
-        ...payload.cards
+        ...action.payload?.cards
       }
 
     default:
