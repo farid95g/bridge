@@ -3,12 +3,17 @@ import { Navigate } from "react-router-dom";
 
 export default class Homepage extends Component {
   componentDidMount() {
-    this.props.drawCard();
+    this.props.shuffleCard();
   }
 
   play = () => {
+    this.props.drawCard(this.props.deckId);
     this.props.startGame();
     this.props.gameOver();
+  }
+
+  newGame = () => {
+    this.props.playAgain();
   }
 
   render() {
@@ -38,7 +43,7 @@ export default class Homepage extends Component {
 
             {
               this.props.finished && <div>
-                <button onClick={this.props.playAgain}>Сыграть еще</button>
+                <button onClick={this.newGame}>Сыграть еще</button>
               </div>
             }
 

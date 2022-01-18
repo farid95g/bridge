@@ -4,7 +4,9 @@ export const authActions = {
 };
 
 export const gameActions = {
+  SET_DECK: 'SET_DECK',
   IS_DRAWEN: 'IS_DRAWEN',
   STARTED: 'STARTED',
-  FINISHED: 'FINISHED'
+  FINISHED: 'FINISHED',
+  SHUFFLED: 'SHUFFLED'
 };

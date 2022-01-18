@@ -1,11 +1,20 @@
 import { gameActions } from '../../utils/constants';
 import { gameServices } from './../../services/game.service';
 
-export const drawCard = () => dispatch => {
+export const shuffleCard = () => dispatch => {
   gameServices
-    .drawCard()
+  .shuffleCard()
+  .then(data => {
+    dispatch({ type: gameActions.SET_DECK, payload: { deckId: data.deck_id, shuffled: data.shuffled } });
+  });
+}
+
+export const drawCard = (deckId) => dispatch => {
+  gameServices
+    .drawCard(deckId)
     .then(data => {
-      dispatch({ type: gameActions.IS_DRAWEN, payload: { cards: data.cards } });
+      console.log(data);
+      dispatch({ type: gameActions.IS_DRAWEN, payload: { deckId: data.deck_id, cards: data.cards } });
     })
 }
 
@@ -16,6 +25,14 @@ export const startGame = () => dispatch => {
 export const gameOver = () => dispatch => {
   dispatch({ type: gameActions.FINISHED, finished: true });
 }
+
+// export const shuffleCard = (deckId) => dispatch => {
+//   gameServices
+//     .shuffleCard(deckId)
+//     .then(data => {
+//       console.log(data);
+//     });
+// }
 
 export const playAgain = () => dispatch => {
   dispatch({ type: gameActions.STARTED, started: false });

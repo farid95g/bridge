@@ -1,6 +1,8 @@
 import { gameActions } from '../../utils/constants';
 
 const initialState = {
+  deckId: '',
+  shuffled: false,
   cards: [],
   started: false,
   finished: false
@@ -8,6 +10,12 @@ const initialState = {
 
 export const gameReducer = (state = initialState, action) => {
   switch (action.type) {
+    case gameActions.SET_DECK:
+      return {
+        ...state,
+        ...action.payload
+      }
+    
     case gameActions.IS_DRAWEN:
       return {
         ...state,
@@ -24,6 +32,12 @@ export const gameReducer = (state = initialState, action) => {
       return {
         ...state,
         finished: action.finished
+      }
+    
+    case gameActions.SHUFFLED:
+      return {
+        ...state,
+        shuffled: action.shuffled
       }
 
     default:

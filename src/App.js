@@ -8,7 +8,7 @@ import {
   login, isLogged, signOut, hasError
 } from './redux/actions/auth';
 import {
-  drawCard, startGame, gameOver, playAgain
+  drawCard, startGame, gameOver, playAgain, shuffleCard
 } from './redux/actions/game';
 
 class App extends Component {
@@ -47,6 +47,8 @@ class App extends Component {
                   finished={this.props.finished}
                   gameOver={this.props.gameOver}
                   playAgain={this.props.playAgain}
+                  deckId={this.props.deckId}
+                  shuffleCard={this.props.shuffleCard}
                 />
             )}
             />
@@ -62,9 +64,10 @@ const mapStateToProps = (state) => ({
   error: state.authReducer.error,
   cards: state.gameReducer.cards,
   started: state.gameReducer.started,
-  finished: state.gameReducer.finished
+  finished: state.gameReducer.finished,
+  deckId: state.gameReducer.deckId
 });
 
 export default connect(mapStateToProps,
-  { login, isLogged, signOut, hasError, drawCard, startGame, gameOver, playAgain }
+  { login, isLogged, signOut, hasError, drawCard, startGame, gameOver, playAgain, shuffleCard }
 )(App);
