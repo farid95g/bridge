@@ -8,6 +8,7 @@ export default class Homepage extends Component {
 
   play = () => {
     this.props.startGame();
+    this.props.gameOver();
   }
 
   render() {
@@ -32,10 +33,17 @@ export default class Homepage extends Component {
                     : <span>?</span>
                 }
               </div>
-              <button onClick={this.play}>Слева</button>
+              {!this.props.finished && <button onClick={this.play}>Слева</button>}
             </div>
+
+            {
+              this.props.finished && <div>
+                <button onClick={this.props.playAgain}>Сыграть еще</button>
+              </div>
+            }
+
             <div>
-              <button onClick={this.play}>Справа</button>
+              {!this.props.finished && <button onClick={this.play}>Справа</button>}
               <div className="card">
                 {
                   this.props.started

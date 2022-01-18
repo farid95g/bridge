@@ -5,5 +5,6 @@ export const authActions = {
 
 export const gameActions = {
   IS_DRAWEN: 'IS_DRAWEN',
-  STARTED: 'STARTED'
+  STARTED: 'STARTED',
+  FINISHED: 'FINISHED'
 };

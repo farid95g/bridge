@@ -12,3 +12,13 @@ export const drawCard = () => dispatch => {
 export const startGame = () => dispatch => {
   dispatch({ type: gameActions.STARTED, started: true });
 }
+
+export const gameOver = () => dispatch => {
+  dispatch({ type: gameActions.FINISHED, finished: true });
+}
+
+export const playAgain = () => dispatch => {
+  dispatch({ type: gameActions.STARTED, started: false });
+  dispatch({ type: gameActions.FINISHED, finished: false });
+  drawCard();
+}
