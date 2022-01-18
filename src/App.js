@@ -4,7 +4,10 @@ import { connect } from 'react-redux';
 import Header from './components/Header';
 import Homepage from './pages/Homepage';
 import Login from './pages/Login';
-import { login, isLogged, signOut, hasError } from './redux/actions/auth';
+import {
+  login, isLogged, signOut, hasError
+} from './redux/actions/auth';
+import { drawCard } from './redux/actions/game';
 
 class App extends Component {
   componentDidMount() {
@@ -35,6 +38,7 @@ class App extends Component {
               element={(
                 <Homepage
                   isAuth={this.props.isAuth}
+                  drawCard={this.props.drawCard}
                 />
             )}
             />
@@ -50,4 +54,6 @@ const mapStateToProps = (state) => ({
   error: state.authReducer.error
 });
 
-export default connect(mapStateToProps, { login, isLogged, signOut, hasError })(App);
+export default connect(mapStateToProps,
+  { login, isLogged, signOut, hasError, drawCard }
+)(App);

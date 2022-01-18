@@ -1,32 +1,36 @@
-import React from 'react';
-import { Navigate } from 'react-router-dom';
+import React, { Component } from "react";
+import { Navigate } from "react-router-dom";
 
-const Homepage = (props) => {
-  if (!props.isAuth) {
-    return <Navigate to="/login" replace />;
+export default class Homepage extends Component {
+  componentDidMount() {
+    this.props.drawCard();
   }
 
-  return (
-    <div className='homepage'>
-      <div className='balance'>
-        <span>Balance: {'71,429'}</span>
-      </div>
-      <h1>Кто выйграет?</h1>
-      <span>Сыграй в игру и испытай удачу</span>
-      <div className='game-zone'>
-        <div>
+  render() {
+    if (!props.isAuth) {
+      return <Navigate to="/login" replace />;
+    }
+
+    return (
+      <div className="homepage">
+        <div className="balance">
+          <span>Balance: {"71,429"}</span>
+        </div>
+        <h1>Кто выйграет?</h1>
+        <span>Сыграй в игру и испытай удачу</span>
+        <div className="game-zone">
           <div>
-            <div className='card'>?</div>
-            <button>Слева</button>
-          </div>
-          <div>
-            <button>Справа</button>
-            <div className='card'>?</div>
+            <div>
+              <div className="card">?</div>
+              <button onClick={props.drawCard}>Слева</button>
+            </div>
+            <div>
+              <button>Справа</button>
+              <div className="card">?</div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  )
+    );
+  }
 }
-
-export default Homepage;
