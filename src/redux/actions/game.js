@@ -26,13 +26,13 @@ export const gameOver = () => dispatch => {
   dispatch({ type: gameActions.FINISHED, finished: true });
 }
 
-// export const shuffleCard = (deckId) => dispatch => {
-//   gameServices
-//     .shuffleCard(deckId)
-//     .then(data => {
-//       console.log(data);
-//     });
-// }
+export const reShuffleCard = (deckId) => dispatch => {
+  gameServices
+    .reShuffleCard(deckId)
+    .then(data => {
+      dispatch({ type: gameActions.SHUFFLED, payload: { shuffled: data.shuffled, cards: [] } });
+    });
+}
 
 export const playAgain = () => dispatch => {
   dispatch({ type: gameActions.STARTED, started: false });

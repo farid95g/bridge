@@ -13,6 +13,7 @@ export default class Homepage extends Component {
   }
 
   newGame = () => {
+    this.props.reShuffleCard(this.props.deckId);
     this.props.playAgain();
   }
 

@@ -37,7 +37,7 @@ export const gameReducer = (state = initialState, action) => {
     case gameActions.SHUFFLED:
       return {
         ...state,
-        shuffled: action.shuffled
+        ...action.payload
       }
 
     default:
