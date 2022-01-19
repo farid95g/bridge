@@ -13,7 +13,6 @@ export const drawCard = (deckId) => dispatch => {
   gameServices
     .drawCard(deckId)
     .then(data => {
-      console.log(data);
       dispatch({ type: gameActions.IS_DRAWEN, payload: { deckId: data.deck_id, cards: data.cards } });
     })
 }

@@ -7,7 +7,6 @@ export const gameServices = {
       .then(response => response.data);
   },
   drawCard(deckId) {
-    console.log(deckId);
     return axios.get(`${BASE_URL}/${deckId}/draw/?count=2`)
       .then(response => response.data);
   },
