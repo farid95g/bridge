@@ -9,5 +9,5 @@ export const gameActions = {
   STARTED: 'STARTED',
   FINISHED: 'FINISHED',
   SHUFFLED: 'SHUFFLED',
-  WON: 'WON'
+  RESULTED: 'RESULTED'
 };

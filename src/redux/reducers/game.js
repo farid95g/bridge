@@ -5,7 +5,11 @@ const initialState = {
   shuffled: false,
   cards: [],
   started: false,
-  finished: false
+  finished: false,
+  result: {
+    resulted: false,
+    won: false
+  }
 };
 
 export const gameReducer = (state = initialState, action) => {
@@ -32,6 +36,14 @@ export const gameReducer = (state = initialState, action) => {
       return {
         ...state,
         finished: action.finished
+      }
+    
+    case gameActions.RESULTED:
+      return {
+        ...state,
+        result: {
+          ...action.payload
+        }
       }
     
     case gameActions.SHUFFLED:
