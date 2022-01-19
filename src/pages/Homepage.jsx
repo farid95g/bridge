@@ -32,7 +32,7 @@ export default class Homepage extends Component {
         <div className="game-zone">
           <div>
             <div>
-              <div className="card">
+              <div className="card" onClick={this.play}>
                 {
                   this.props.started
                     ? <img src={this.props.cards[0]?.image} />
@@ -50,7 +50,7 @@ export default class Homepage extends Component {
 
             <div>
               {!this.props.finished && <button onClick={this.play}>Справа</button>}
-              <div className="card">
+              <div className="card" onClick={this.play}>
                 {
                   this.props.started
                     ? <img src={this.props.cards[1]?.image} />
