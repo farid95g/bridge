@@ -8,5 +8,6 @@ export const gameActions = {
   IS_DRAWEN: 'IS_DRAWEN',
   STARTED: 'STARTED',
   FINISHED: 'FINISHED',
-  SHUFFLED: 'SHUFFLED'
+  SHUFFLED: 'SHUFFLED',
+  WON: 'WON'
 };

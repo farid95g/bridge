@@ -14,15 +14,9 @@ export const drawCard = (deckId) => dispatch => {
     .drawCard(deckId)
     .then(data => {
       dispatch({ type: gameActions.IS_DRAWEN, payload: { deckId: data.deck_id, cards: data.cards } });
+      dispatch({ type: gameActions.STARTED, started: true });
+      dispatch({ type: gameActions.FINISHED, finished: true });
     })
-}
-
-export const startGame = () => dispatch => {
-  dispatch({ type: gameActions.STARTED, started: true });
-}
-
-export const gameOver = () => dispatch => {
-  dispatch({ type: gameActions.FINISHED, finished: true });
 }
 
 export const reShuffleCard = (deckId) => dispatch => {

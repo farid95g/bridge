@@ -21,8 +21,6 @@ export default class Homepage extends Component {
 
   play = () => {
     this.props.drawCard(this.props.deckId);
-    this.props.startGame();
-    this.props.gameOver();
   }
 
   gameResult = (i) => {
@@ -30,6 +28,7 @@ export default class Homepage extends Component {
     const opponentValue = i === 0 ? this.props.cards[1]?.value : this.props.cards[0]?.value;
     console.log("player value: ", playerValue);
     console.log("opponent value: ", opponentValue);
+    console.log(Number(playerValue) > Number(opponentValue));
   }
 
   newGame = () => {

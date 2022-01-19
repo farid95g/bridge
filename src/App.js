@@ -8,7 +8,7 @@ import {
   login, isLogged, signOut, hasError
 } from './redux/actions/auth';
 import {
-  drawCard, startGame, gameOver, playAgain, shuffleCard, reShuffleCard
+  drawCard, playAgain, shuffleCard, reShuffleCard
 } from './redux/actions/game';
 
 class App extends Component {
@@ -43,9 +43,7 @@ class App extends Component {
                   drawCard={this.props.drawCard}
                   cards={this.props.cards}
                   started={this.props.started}
-                  startGame={this.props.startGame}
                   finished={this.props.finished}
-                  gameOver={this.props.gameOver}
                   playAgain={this.props.playAgain}
                   deckId={this.props.deckId}
                   shuffleCard={this.props.shuffleCard}
@@ -70,5 +68,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps,
-  { login, isLogged, signOut, hasError, drawCard, startGame, gameOver, playAgain, shuffleCard, reShuffleCard }
+  { login, isLogged, signOut, hasError, drawCard, playAgain, shuffleCard, reShuffleCard }
 )(App);
