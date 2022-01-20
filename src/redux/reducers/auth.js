@@ -1,7 +1,8 @@
 import { authActions } from '../../utils/constants';
+import { LocalStorageServices as ls } from '../../services/localstorage.service';
 
 const initialState = {
-  isAuth: false,
+  isAuth: ls.get('isAuth'),
   error: false
 };
 
