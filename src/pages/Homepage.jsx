@@ -62,12 +62,13 @@ export default class Homepage extends Component {
 
         <div className='amount-input'>
           {Number(this.state.amount) * 2 > this.props.balance && <p className='has-error'>Недостаточное количество денег. Сделайте другую ставку. У вас ${this.props.balance} денег. А ставка умноженная на 2 будет ${this.state.amount * 2}.</p>}
-          <label for='amount'>Сделайте ставку, $10 будет ставлен если пропустить это. Выйгрыш или проигрыш это ставка умноженная на коэфициент 2:</label>
+          <label htmlFor='amount'>Сделайте ставку, $10 будет ставлен если пропустить это. Выйгрыш или проигрыш это ставка умноженная на коэфициент 2:</label>
           <input
             type='number'
             value={this.state.amount}
             disabled={this.props.result.resulted}
             onChange={(e) => this.setState({ amount: e.target.value })}
+            id='amount'
           />
         </div>
         
