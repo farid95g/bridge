@@ -10,10 +10,23 @@ import {
 import {
   drawCard, playAgain, shuffleCard, reShuffleCard
 } from './redux/actions/game';
+import { LocalStorageServices as ls } from './services/localstorage.service';
 
 class App extends Component {
   componentDidMount() {
     this.props.isLogged();
+
+    window.addEventListener('storage', this.onStorageChange);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('storage', this.onStorageChange);
+  }
+
+  onStorageChange = () => {
+    if (!ls.get('isAuth')) {
+      this.props.signOut();
+    }
   }
 
   render() {

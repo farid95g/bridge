@@ -30,7 +30,7 @@ export default class Homepage extends Component {
 
   render() {
     if (!this.props.isAuth) {
-      return <Navigate to="/login" replace />;
+      return <Navigate to="/login" replace={true} />;
     }
 
     return (
