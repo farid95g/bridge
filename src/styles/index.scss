@@ -46,6 +46,7 @@ body {
   .has-error {
     color: red;
     margin-bottom: .5rem;
+    font-weight: 600;
   }
 
   .login-page {
@@ -135,7 +136,9 @@ body {
 
     .amount-input {
       display: flex;
+      flex-direction: column;
       justify-content: center;
+      align-items: center;
       padding-top: 1rem;
 
       input {

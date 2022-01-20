@@ -6,7 +6,8 @@ export default class Homepage extends Component {
     super(props);
 
     this.state = {
-      amount: ''
+      amount: '',
+      tempAmount: ''
     }
   }
   componentDidMount() {
@@ -14,11 +15,15 @@ export default class Homepage extends Component {
   }
 
   play = (i) => {
+    if (this.state.amount > this.props.balance) {
+      return;
+    }
     this.props.drawCard(this.props.deckId, i, this.props.balance, this.state.amount || 10);
+    this.setState({ tempAmount: this.state.amount, amount: '' })
   }
 
   newGame = () => {
-    this.setState({ amount: '' })
+    this.setState({ tempAmount: '' });
     this.props.reShuffleCard(this.props.deckId);
     this.props.playAgain();
   }
@@ -37,8 +42,8 @@ export default class Homepage extends Component {
           !this.props.result.resulted
             ? 'Кто выйграет?'
             : !this.props.result.won
-              ? `Вы проиграли $${this.state.amount || 10}`
-              : `Вы выйграли $${this.state.amount || 10}`
+              ? `Вы проиграли $${this.state.tempAmount || 10}`
+              : `Вы выйграли $${this.state.tempAmount || 10}`
         }</h1>
 
         <span>{
@@ -50,6 +55,7 @@ export default class Homepage extends Component {
         }</span>
 
         <div className='amount-input'>
+          {this.state.amount > this.props.balance && <p className='has-error'>Недостаточное количество денег. Сделайте другую ставку. У вас ${this.props.balance} денег.</p>}
           <input
             type='number'
             value={this.state.amount}
