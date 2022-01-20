@@ -53,6 +53,7 @@ export default class Homepage extends Component {
           <input
             type='number'
             value={this.state.amount}
+            disabled={this.props.result.resulted}
             onChange={(e) => this.setState({ amount: e.target.value })}
           />
         </div>
