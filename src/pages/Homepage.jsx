@@ -15,11 +15,11 @@ export default class Homepage extends Component {
   }
 
   play = (i) => {
-    if (this.state.amount > this.props.balance) {
+    if (this.state.amount * 2 > this.props.balance) {
       return;
     }
     this.props.drawCard(this.props.deckId, i, this.props.balance, this.state.amount || 10);
-    this.setState({ tempAmount: this.state.amount, amount: '' })
+    this.setState({ tempAmount: Number(this.state.amount), amount: '' })
   }
 
   newGame = () => {
@@ -42,8 +42,8 @@ export default class Homepage extends Component {
           !this.props.result.resulted
             ? 'Кто выйграет?'
             : !this.props.result.won
-              ? `Вы проиграли $${this.state.tempAmount || 10}`
-              : `Вы выйграли $${this.state.tempAmount || 10}`
+              ? `Вы проиграли $${this.state.tempAmount * 2 || 20}`
+              : `Вы выйграли $${this.state.tempAmount * 2 || 20}`
         }</h1>
 
         <span>{
@@ -55,7 +55,8 @@ export default class Homepage extends Component {
         }</span>
 
         <div className='amount-input'>
-          {this.state.amount > this.props.balance && <p className='has-error'>Недостаточное количество денег. Сделайте другую ставку. У вас ${this.props.balance} денег.</p>}
+          {Number(this.state.amount) * 2 > this.props.balance && <p className='has-error'>Недостаточное количество денег. Сделайте другую ставку. У вас ${this.props.balance} денег. А ставка умноженная на 2 будет ${this.state.amount * 2}.</p>}
+          <label for='amount'>Сделайте ставку, $10 будет ставлен если пропустить это. Выйгрыш или проигрыш это ставка умноженная на коэфициент 2:</label>
           <input
             type='number'
             value={this.state.amount}

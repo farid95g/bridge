@@ -141,6 +141,10 @@ body {
       align-items: center;
       padding-top: 1rem;
 
+      label {
+        margin-bottom: .5rem;
+      }
+
       input {
         &, &:focus {
           width: 40%;
