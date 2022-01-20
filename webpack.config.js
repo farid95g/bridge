@@ -7,11 +7,11 @@ module.exports = {
     port: 3000,
     historyApiFallback: true,
   },
-  entry: "/src/index.js",
+  entry: "./src/index.js",
   output: {
     filename: "index.js",
     path: path.resolve(__dirname, "build"),
-    publicPath: '/'
+    publicPath: './'
   },
   module: {
     rules: [
