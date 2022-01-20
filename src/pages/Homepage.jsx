@@ -15,11 +15,13 @@ export default class Homepage extends Component {
   }
 
   play = (i) => {
-    if (this.state.amount * 2 > this.props.balance) {
-      return;
+    if (!this.props.result.resulted) {
+      if (this.state.amount * 2 > this.props.balance) {
+        return;
+      }
+      this.props.drawCard(this.props.deckId, i, this.props.balance, this.state.amount || 10);
+      this.setState({ tempAmount: Number(this.state.amount), amount: '' })
     }
-    this.props.drawCard(this.props.deckId, i, this.props.balance, this.state.amount || 10);
-    this.setState({ tempAmount: Number(this.state.amount), amount: '' })
   }
 
   newGame = () => {
