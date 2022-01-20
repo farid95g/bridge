@@ -19,6 +19,7 @@ export default class Login extends Component {
     e.preventDefault();
     const { username, password } = this.state;
     this.props.login(username, password);
+    this.setState({ username: '', password: '' });
   }
 
   onFieldChange(e, prop) {
