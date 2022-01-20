@@ -37,14 +37,33 @@ export const playAgain = () => dispatch => {
 }
 
 const gameResult = (i, cards, dispatch) => {
-  console.log(cards);
   const playerValue = cards[i]?.value;
   const opponentValue = i === 0 ? cards[1]?.value : cards[0]?.value;
-  console.log("player value: ", playerValue);
-  console.log("opponent value: ", opponentValue);
+  const result = processGameResult(playerValue, opponentValue);
 
   dispatch({
     type: gameActions.RESULTED,
-    payload: { resulted: true, won: Number(playerValue) > Number(opponentValue) }
+    payload: { resulted: true, won: result }
   });
+}
+
+const processGameResult = (playerValue, opponentValue) => {
+  const values = {
+    'ACE': 1,
+    'JACK': 11,
+    'QUEEN': 12,
+    'KING': 13
+  }
+
+  let pValue = playerValue, oValue = opponentValue;
+
+  Object.entries(values).forEach(([k, v]) => {
+    if (pValue === k) {
+      pValue = v;
+    } else if (oValue === k) {
+      oValue = v;
+    }
+  });
+
+  return Number(pValue) > Number(oValue);
 }
