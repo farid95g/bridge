@@ -133,6 +133,23 @@ body {
       text-align: center;
     }
 
+    .amount-input {
+      display: flex;
+      justify-content: center;
+      padding-top: 1rem;
+
+      input {
+        &, &:focus {
+          width: 40%;
+          height: 2rem;
+          border: 1px solid rgba(0, 0, 0, .5);
+          padding: .3rem .5rem;
+          outline: none;
+          border-radius: 5px;
+        }
+      }
+    }
+
     .game-zone {
       padding: 2rem 4rem;
 

@@ -2,15 +2,23 @@ import React, { Component } from "react";
 import { Navigate } from "react-router-dom";
 
 export default class Homepage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      amount: ''
+    }
+  }
   componentDidMount() {
     this.props.shuffleCard();
   }
 
   play = (i) => {
-    this.props.drawCard(this.props.deckId, i, this.props.balance, 10);
+    this.props.drawCard(this.props.deckId, i, this.props.balance, this.state.amount || 10);
   }
 
   newGame = () => {
+    this.setState({ amount: '' })
     this.props.reShuffleCard(this.props.deckId);
     this.props.playAgain();
   }
@@ -29,8 +37,8 @@ export default class Homepage extends Component {
           !this.props.result.resulted
             ? 'Кто выйграет?'
             : !this.props.result.won
-              ? `Вы проиграли $${10}`
-              : `Вы выйграли $${10}`
+              ? `Вы проиграли $${this.state.amount || 10}`
+              : `Вы выйграли $${this.state.amount || 10}`
         }</h1>
 
         <span>{
@@ -40,6 +48,14 @@ export default class Homepage extends Component {
               ? ':('
               : ':)'
         }</span>
+
+        <div className='amount-input'>
+          <input
+            type='number'
+            value={this.state.amount}
+            onChange={(e) => this.setState({ amount: e.target.value })}
+          />
+        </div>
         
         <div className="game-zone">
           <div>

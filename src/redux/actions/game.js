@@ -47,7 +47,9 @@ const gameResult = (i, cards, balance, amount, dispatch) => {
   });
   dispatch({
     type: gameActions.BALANCE_CHANGE,
-    balance: result ? balance + amount : balance - amount
+    balance: result
+      ? balance + Number(amount)
+      : balance - Number(amount)
   });
 }
 
