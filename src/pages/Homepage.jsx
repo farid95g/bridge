@@ -7,7 +7,7 @@ export default class Homepage extends Component {
   }
 
   play = (i) => {
-    this.props.drawCard(this.props.deckId, i);
+    this.props.drawCard(this.props.deckId, i, this.props.balance, 10);
   }
 
   newGame = () => {
@@ -23,14 +23,14 @@ export default class Homepage extends Component {
     return (
       <div className="homepage">
         <div className="balance">
-          <span>Balance: {"71,429"}</span>
+          <span>Balance: ${this.props.balance.toLocaleString()}</span>
         </div>
         <h1>{
           !this.props.result.resulted
             ? 'Кто выйграет?'
             : !this.props.result.won
-              ? 'Вы проиграли'
-              : 'Вы выйграли 10$'
+              ? `Вы проиграли $${10}`
+              : `Вы выйграли $${10}`
         }</h1>
 
         <span>{

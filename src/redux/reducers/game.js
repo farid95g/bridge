@@ -9,7 +9,8 @@ const initialState = {
   result: {
     resulted: false,
     won: false
-  }
+  },
+  balance: 71429
 };
 
 export const gameReducer = (state = initialState, action) => {
@@ -44,6 +45,12 @@ export const gameReducer = (state = initialState, action) => {
         result: {
           ...action.payload
         }
+      }
+    
+    case gameActions.BALANCE_CHANGE:
+      return {
+        ...state,
+        balance: action.balance
       }
     
     case gameActions.SHUFFLED:

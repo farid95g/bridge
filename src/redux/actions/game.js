@@ -9,7 +9,7 @@ export const shuffleCard = () => dispatch => {
   });
 }
 
-export const drawCard = (deckId, cardNumber) => dispatch => {
+export const drawCard = (deckId, cardNumber, balance, amount) => dispatch => {
   gameServices
     .drawCard(deckId)
     .then(data => {
@@ -17,7 +17,7 @@ export const drawCard = (deckId, cardNumber) => dispatch => {
       dispatch({ type: gameActions.STARTED, started: true });
       dispatch({ type: gameActions.FINISHED, finished: true });
 
-      gameResult(cardNumber, data.cards, dispatch);
+      gameResult(cardNumber, data.cards, balance, amount, dispatch);
     })
 }
 
@@ -36,7 +36,7 @@ export const playAgain = () => dispatch => {
   drawCard();
 }
 
-const gameResult = (i, cards, dispatch) => {
+const gameResult = (i, cards, balance, amount, dispatch) => {
   const playerValue = cards[i]?.value;
   const opponentValue = i === 0 ? cards[1]?.value : cards[0]?.value;
   const result = processGameResult(playerValue, opponentValue);
@@ -44,6 +44,10 @@ const gameResult = (i, cards, dispatch) => {
   dispatch({
     type: gameActions.RESULTED,
     payload: { resulted: true, won: result }
+  });
+  dispatch({
+    type: gameActions.BALANCE_CHANGE,
+    balance: result ? balance + amount : balance - amount
   });
 }
 

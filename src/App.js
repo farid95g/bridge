@@ -49,6 +49,7 @@ class App extends Component {
                   shuffleCard={this.props.shuffleCard}
                   reShuffleCard={this.props.reShuffleCard}
                   result={this.props.result}
+                  balance={this.props.balance}
                 />
             )}
             />
@@ -66,7 +67,8 @@ const mapStateToProps = (state) => ({
   started: state.gameReducer.started,
   finished: state.gameReducer.finished,
   deckId: state.gameReducer.deckId,
-  result: state.gameReducer.result
+  result: state.gameReducer.result,
+  balance: state.gameReducer.balance
 });
 
 export default connect(mapStateToProps,
