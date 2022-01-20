@@ -41,17 +41,21 @@ export default class Homepage extends Component {
         <h1>{
           !this.props.result.resulted
             ? 'Кто выйграет?'
-            : !this.props.result.won
-              ? `Вы проиграли $${this.state.tempAmount * 2 || 20}`
-              : `Вы выйграли $${this.state.tempAmount * 2 || 20}`
+            : this.props.result.won
+              ? `Вы выйграли $${this.state.tempAmount * 2 || 20}`
+              : this.props.result.draw
+                ? 'Ничья'
+                : `Вы проиграли $${this.state.tempAmount * 2 || 20}`
         }</h1>
 
         <span>{
           !this.props.result.resulted
             ? 'Сыграй в игру и испытай удачу'
-            : !this.props.result.won
-              ? ':('
-              : ':)'
+            : this.props.result.won
+              ? ':)'
+              : this.props.result.draw
+                ? ':|'
+                : ':('
         }</span>
 
         <div className='amount-input'>

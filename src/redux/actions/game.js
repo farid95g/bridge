@@ -43,14 +43,17 @@ const gameResult = (i, cards, balance, amount, dispatch) => {
 
   dispatch({
     type: gameActions.RESULTED,
-    payload: { resulted: true, won: result }
+    payload: { resulted: true, won: result === 'DRAW' ? false : result, draw: result === 'DRAW' ? true : false }
   });
-  dispatch({
-    type: gameActions.BALANCE_CHANGE,
-    balance: result
-      ? balance + (Number(amount) * 2)
-      : balance - (Number(amount) * 2)
-  });
+
+  if (result !== 'DRAW') {
+    dispatch({
+      type: gameActions.BALANCE_CHANGE,
+      balance: result
+        ? balance + (Number(amount) * 2)
+        : balance - (Number(amount) * 2)
+    });
+  }
 }
 
 const processGameResult = (playerValue, opponentValue) => {
@@ -63,13 +66,25 @@ const processGameResult = (playerValue, opponentValue) => {
 
   let pValue = playerValue, oValue = opponentValue;
 
+  console.log("player value: " + pValue);
+  console.log("opponent value: " + oValue);
+
   Object.entries(values).forEach(([k, v]) => {
     if (pValue === k) {
       pValue = v;
-    } else if (oValue === k) {
+    }
+    
+    if (oValue === k) {
       oValue = v;
     }
   });
+
+  console.log("player value: " + pValue);
+  console.log("opponent value: " + oValue);
+
+  if (Number(pValue) === Number(oValue)) {
+    return 'DRAW';
+  }
 
   return Number(pValue) > Number(oValue);
 }

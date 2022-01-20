@@ -8,7 +8,8 @@ const initialState = {
   finished: false,
   result: {
     resulted: false,
-    won: false
+    won: false,
+    draw: false
   },
   balance: 71429
 };
