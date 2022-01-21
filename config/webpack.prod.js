@@ -48,9 +48,6 @@ const prodConfig = {
     }),
     new MiniCssExtractPlugin({ filename: "styles.[hash].css" })
   ],
-  resolve: {
-    extensions: ["", ".js", ".jsx", ".es6"]
-  }
 };
 
 module.exports = merge(commonConfig, prodConfig);

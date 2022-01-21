@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Simple card game called Bridge",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "webpack": "webpack",
     "webpack-dev-server": "webpack-dev-server",
