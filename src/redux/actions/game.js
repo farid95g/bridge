@@ -66,9 +66,6 @@ const processGameResult = (playerValue, opponentValue) => {
 
   let pValue = playerValue, oValue = opponentValue;
 
-  console.log("player value: " + pValue);
-  console.log("opponent value: " + oValue);
-
   Object.entries(values).forEach(([k, v]) => {
     if (pValue === k) {
       pValue = v;
@@ -78,9 +75,6 @@ const processGameResult = (playerValue, opponentValue) => {
       oValue = v;
     }
   });
-
-  console.log("player value: " + pValue);
-  console.log("opponent value: " + oValue);
 
   if (Number(pValue) === Number(oValue)) {
     return 'DRAW';

@@ -1,12 +1,16 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { merge } = require('webpack-merge');
+const commonConfig = require('./webpack.common');
 
-module.exports = {
-  entry: "/src/index.js",
+const prodConfig = {
+  mode: "production",
+  entry: "./src/index.js",
   output: {
-    filename: "index.js",
-    path: path.resolve(__dirname, "build"),
-    publicPath: '/'
+    filename: "index.[hash].js",
+    path: path.resolve(path.join(__dirname, '../'), "build"),
+    publicPath: './'
   },
   module: {
     rules: [
@@ -31,15 +35,22 @@ module.exports = {
         ],
         include: path.resolve(__dirname, "./src/**/*.js"),
         exclude: /node_modules/,
-      }
+      },
+      {
+        test: /\.sa?css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+      },
     ],
   },
   plugins: [
     new HtmlWebPackPlugin({
       template: "./public/index.html",
     }),
+    new MiniCssExtractPlugin({ filename: "styles.[hash].css" })
   ],
   resolve: {
     extensions: ["", ".js", ".jsx", ".es6"]
   }
 };
+
+module.exports = merge(commonConfig, prodConfig);
