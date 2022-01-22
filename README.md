@@ -7,6 +7,6 @@ To run the app locally, follow the instructions below:
 3) Run command 'npm i'
 4) After all dependencies installed successfully, run 'npm start' in terminal
 
-5) When app is started and running, use below test credentials for authentication:
-username: admin
-password: 123456
+5) When app is started and running, use below test credentials for authentication:  
+username: admin  
+password: 123456  
